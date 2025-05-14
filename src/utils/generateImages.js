@@ -39,7 +39,7 @@ function organizeImagesWithVariations(filenames) {
       imageGroups[baseName].variations.push({
         id: variation || 'default',
         name: variation ? `Variation ${variation.toUpperCase()}` : 'Default',
-        src: `./images/${filename}`
+        src: `${process.env.PUBLIC_URL}/images/${filename}`
       });
     });
 
