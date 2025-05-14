@@ -1,70 +1,159 @@
-# Getting Started with Create React App
+# Illustration Creator Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Illustration Creator is a web-based tool that allows users to create custom illustrations by combining pre-defined shapes, colour themes, and object images. It provides an intuitive interface for customising illustrations with precise control over positioning, scaling, and rotation, making it ideal for creating marketing assets, presentations, and social media graphics.
 
-In the project directory, you can run:
+![Illustration Creator Screenshot](screenshot.png)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Shape Selection**: Choose from multiple shape options including Circle (Recording), Cloud, Conversation, Star (Trends), and Diamond (Insights)
+- **Theme Selection**: Apply brand colours with different variations (Standard, Emphasis, Subtle, Gradient)
+- **Mask Controls**: Toggle visibility of different quadrants for creative mask effects
+- **Object Selection**: Browse and search through a library of object images
+- **Interactive Controls**: 
+  - Directly manipulate objects with intuitive handles
+  - Drag to position objects
+  - Scale using the bottom-left handle
+  - Rotate using the top-right handle
+- **Real-time Preview**: See changes instantly as you adjust settings
+- **Export**: Generate high-quality PNG images with transparent backgrounds
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How It Works
 
-### `npm test`
+The tool uses SVG for rendering shapes and applying masks, allowing for precise control and high-quality output. The architecture is component-based, with clear separation between the control panel and preview area.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technical Details
 
-### `npm run build`
+- **React Components**: Built with modular React components for maintainability
+- **SVG Rendering**: Uses SVG for shapes, masks, and transformations
+- **Interactive Handles**: Custom implementation for direct manipulation of objects
+- **PNG Export**: Converts SVG to Canvas to PNG for downloading illustrations
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How to Use
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Select a Shape**: Click on one of the shape options (Circle, Cloud, Conversation, Star, Diamond)
+2. **Choose a Theme**: Select a colour theme and variation to apply to the shape
+3. **Adjust Mask**: Toggle quadrant visibility to create interesting masking effects
+4. **Select an Object**: Choose an object image from the dropdown menu
+5. **Position the Object**: 
+   - Click on the image to select it (blue handles will appear)
+   - Drag the image to position it within the shape
+   - Use the bottom-left square handle to resize
+   - Use the top-right circular handle to rotate
+6. **Export**: Click the "Export PNG" button to download your creation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation and Setup
 
-### `npm run eject`
+### Prerequisites
+- Node.js 14.x or higher
+- npm or yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
+   ```
+   git clone https://github.com/noureddinemade/dub-illustration-maker.git
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Navigate to the project directory:
+   ```
+   cd illustration-creator
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Install dependencies:
+   ```
+   npm install
+   ```
+   or
+   ```
+   yarn install
+   ```
 
-## Learn More
+4. Start the development server:
+   ```
+   npm start
+   ```
+   or
+   ```
+   yarn start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Open http://localhost:3000 in your browser
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
 
-### Code Splitting
+```
+/src
+  /components
+    /IllustrationCreator
+      /index.jsx         # Main component
+      /ShapeSelector.jsx # Shape selection control
+      /ThemeSelector.jsx # Theme selection control
+      /MaskControls.jsx  # Mask quadrant toggles
+      /ImageControls.jsx # Object selection and adjustments
+      /Preview.jsx       # Preview and export functionality
+  /constants
+    /colours.js          # Theme definitions
+    /images.js           # Object image definitions
+    /masks.js            # Mask path definitions
+    /shapes.js           # Shape path definitions
+  /utils
+    /generateImages.js   # Utility for organising images
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Customisation
 
-### Analyzing the Bundle Size
+### Adding New Shapes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Add new shapes to the `shapes.js` file following this format:
 
-### Making a Progressive Web App
+```javascript
+newShape: {
+  name: 'Shape Name',
+  path: 'SVG path data',
+  viewBox: '0 0 1200 1200',
+  center: { x: 600, y: 600 },
+  imageDefaults: {
+    x: 460,
+    y: 460,
+    width: 280,
+    height: 280
+  },
+  maskPaths: {
+    base: 'SVG path for base mask',
+    quadrants: {
+      topLeft: 'SVG path for top-left quadrant',
+      topRight: 'SVG path for top-right quadrant',
+      bottomLeft: 'SVG path for bottom-left quadrant',
+      bottomRight: 'SVG path for bottom-right quadrant'
+    }
+  }
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Adding New Themes
 
-### Advanced Configuration
+Add new themes to the `colours.js` file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```javascript
+newTheme: {
+  name: 'Theme Name',
+  emphasis: '#hexColour',
+  standard: '#hexColour',
+  subtle: '#hexColour',
+  gradient: {
+    color: '#hexColour',
+    type: 'linear',
+    stops: [
+      { offset: '0%', opacity: '1' },
+      { offset: '100%', opacity: '0' }
+    ]
+  }
+}
+```
 
-### Deployment
+### Adding New Object Images
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Place new images in the `/public/images` directory and update the images list in the appropriate file.
