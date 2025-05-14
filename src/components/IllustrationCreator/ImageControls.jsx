@@ -38,32 +38,33 @@ const ImageControls = ({ selectedImage, imageProps, onSelectImage, onUpdateImage
     return null;
   };
   
-  // Initialize selections when component loads
-  useEffect(() => {
-    if (!selectedImageType) {
-      const randomSelection = selectRandomImage();
+// Initialize selections when component loads
+useEffect(() => {
+  if (!selectedImageType) {
+    const randomSelection = selectRandomImage();
+    
+    if (randomSelection) {
+      setSelectedImageType(randomSelection.imageType);
+      setSelectedVariation(randomSelection.variation);
       
-      if (randomSelection) {
-        setSelectedImageType(randomSelection.imageType);
-        setSelectedVariation(randomSelection.variation);
-        
-        // If using the enhanced image selection handler that takes type and variation:
-        if (typeof onSelectImage === 'function') {
-          if (onSelectImage.length >= 3) {
-            // Enhanced version that accepts type and variation
-            onSelectImage(
-              randomSelection.variation.src, 
-              randomSelection.imageType, 
-              randomSelection.variation
-            );
-          } else {
-            // Simple version that only accepts the image src
-            onSelectImage(randomSelection.variation.src);
-          }
+      // If using the enhanced image selection handler that takes type and variation:
+      if (typeof onSelectImage === 'function') {
+        if (onSelectImage.length >= 3) {
+          // Enhanced version that accepts type and variation
+          onSelectImage(
+            randomSelection.variation.src, 
+            randomSelection.imageType, 
+            randomSelection.variation
+          );
+        } else {
+          // Simple version that only accepts the image src
+          onSelectImage(randomSelection.variation.src);
         }
       }
     }
-  }, []);
+  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
   
   // Handle click outside to close dropdown
   useEffect(() => {

@@ -248,26 +248,27 @@ const Preview = ({ shape, theme, variation, maskQuadrants, selectedImage, imageP
     }
   };
   
-  // Add and remove event listeners
-  useEffect(() => {
-    if (interactionMode) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-    }
-    
-    // Add click outside listener when selected
-    if (isSelected) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [interactionMode, isSelected, interactionStart, initialProps, initialAngle]);
+// Add and remove event listeners
+useEffect(() => {
+  if (interactionMode) {
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+  }
+  
+  // Add click outside listener when selected
+  if (isSelected) {
+    document.addEventListener('mousedown', handleClickOutside);
+  } else {
+    document.removeEventListener('mousedown', handleClickOutside);
+  }
+  
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mouseup', handleMouseUp);
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [interactionMode, isSelected, interactionStart, initialProps, initialAngle]);
   
   // Watch for changes in the selected shape, theme, etc., and deselect when they change
   useEffect(() => {
