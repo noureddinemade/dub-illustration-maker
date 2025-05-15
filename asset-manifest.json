@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dub-illustration-maker/static/css/main.82d16980.css",
+    "main.js": "/dub-illustration-maker/static/js/main.4dfb239d.js",
+    "static/js/453.b38c2201.chunk.js": "/dub-illustration-maker/static/js/453.b38c2201.chunk.js",
+    "index.html": "/dub-illustration-maker/index.html",
+    "main.82d16980.css.map": "/dub-illustration-maker/static/css/main.82d16980.css.map",
+    "main.4dfb239d.js.map": "/dub-illustration-maker/static/js/main.4dfb239d.js.map",
+    "453.b38c2201.chunk.js.map": "/dub-illustration-maker/static/js/453.b38c2201.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82d16980.css",
+    "static/js/main.4dfb239d.js"
+  ]
+}
