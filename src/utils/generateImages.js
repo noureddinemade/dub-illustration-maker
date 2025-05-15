@@ -39,7 +39,7 @@ function organizeImagesWithVariations(filenames) {
       imageGroups[baseName].variations.push({
         id: variation || 'default',
         name: variation ? `Variation ${variation.toUpperCase()}` : 'Default',
-        src: `${process.env.PUBLIC_URL}/images/${filename}`
+        src: `   https://s3-bucket-dubber-brand-assets-global-nonprod.s3.us-west-2.amazonaws.com/illustrations/objects/images/${filename}`
       });
     });
 
